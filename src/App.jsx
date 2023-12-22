@@ -7,6 +7,8 @@ import SecondHeader from './components/SecondHeader'
 import FirstBody from './components/FirstBody'
 import Solutions from './components/Solutions'
 import Customer from './components/Customer'
+import Subscribe from './components/Subscribe'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +20,8 @@ function App() {
      <FirstBody/>
      <Solutions/>
      <Customer/>
+     <Subscribe/>
+     <Footer/>
     </>
   )
 }
