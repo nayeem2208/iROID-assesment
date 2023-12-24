@@ -2,8 +2,8 @@ import React from "react";
 
 function SecondHeader() {
   return (
-    <div className="bg-slate-50 h-12 flex justify-center items-center" >
-      <p className=" text-sm font-medium" style={{ color: "#242424" }}>
+    <div className="bg-slate-50 h-16 sm:h-12 flex justify-center items-center" >
+      <p className="text-xs sm:text-sm font-medium text-center" style={{ color: "#242424" }}>
         Innovative augmented reality solutions for eCommerce businesses -
         <span
           className="underline underline-offset-4"

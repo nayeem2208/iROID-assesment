@@ -8,30 +8,39 @@ import Routers from "../Router";
 
 function Solutions() {
   const location = useLocation();
-
-  const getButtonClassName = (path) => {
-    return location.pathname.endsWith(path) === path ? 'active-button' : '';
-  };
   console.log(location.pathname)
   return (
     <div className="text-gray-800 mb-12">
       <div className="mt-24 flex justify-center">
         <p className="font-semibold text-4xl">Our Solutions</p>
       </div>
-      <div className="flex justify-center mt-8">
-        <Link to='/' className={`mx-4  ${getButtonClassName('/')}`}>
+      <div className="flex flex-wrap justify-center mt-8">
+        <Link
+          to="/"
+          className={`mx-4 ${
+            location.pathname.endsWith("/") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
+          }`}
+        >
           All
         </Link>
-        <Link to='/CGI' className={`mx-4 ${getButtonClassName('/CGI')}`}>
+        <Link to="/CGI"  className={`mx-4 ${
+            location.pathname.endsWith("/CGI") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
+          }`}>
           CGI
         </Link>
-        <Link to='/Enhance_dbrand_contend' className={`mx-4 ${getButtonClassName('/Enhanced')}`}>
+        <Link to="/Enhance_dbrand_contend"  className={`mx-4 ${
+            location.pathname.endsWith("/Enhance_dbrand_contend") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
+          }`}>
           Enhanced Brand Content
         </Link>
-        <Link to='/Photography' className={`mx-4 ${getButtonClassName('/Photography')}`}>
+        <Link to="/Photography"  className={`mx-4 ${
+            location.pathname.endsWith("/Photography") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
+          }`}>
           Product Photography
         </Link>
-        <Link to='/CreativeServices' className={`mx-4 ${getButtonClassName('/CreativeServices')}`}>
+        <Link to="/CreativeServices"  className={`mx-4 ${
+            location.pathname.endsWith("/CreativeServices") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
+          }`}>
           Creative Services
         </Link>
       </div>

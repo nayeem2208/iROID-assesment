@@ -9,48 +9,100 @@ import "slick-carousel/slick/slick-theme.css";
 
 function Customer() {
   const sliderRef1 = useRef(null);
-  const [right,SetRight]=useState(false)
 
   const handleSliderNext = () => {
     if (sliderRef1.current) {
       sliderRef1.current.slickNext();
-      SetRight(true)
     }
   };
 
   const handleSliderPrev = () => {
     if (sliderRef1.current) {
       sliderRef1.current.slickPrev();
-      SetRight(false)
     }
   };
-  console.log(right)
 
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
+    // autoplay: true,
     slidesToShow: 3,
     slidesToScroll: 3,
     initialSlide: 0,
-    nextArrow: <TfiArrowRight />,
-    prevArrow: <TfiArrowLeft />,
+    // nextArrow: <TfiArrowRight />,
+    // prevArrow: <TfiArrowLeft />,
     appendDots: dots => (
-    <div
-          className="rounded-full mt-3 w-3 h-3 mx-1"
-          style={{ backgroundColor: "#FF4729", filter: "opacity(0.5)" }}
-        ></div>
-    )
-  };
+
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "20px",
+          display: "flex",
+          justifyContent:'center'
+          
+        }}
+      >
+         <TfiArrowLeft
+        className="w-8 h-8 sm:mx-6"
+        style={{ color: "#FF4729" }}
+        onClick={handleSliderPrev}
+      />
+        <ul style={{ margin: "10px", color: "black" }}>{dots}</ul>
+        <TfiArrowRight
+        className="w-8 h-8 sm:mx-6"
+        style={{ color: "#FF4729" }}
+        onClick={handleSliderNext}
+      />
+      </div>
+    // </div>
+    ),
+    responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ],
+      customPaging: i => (
+        <div
+          style={{
+            height:'10px',
+            width: "10px",
+            backgroundColor: "#FF4729",
+            borderRadius: "30px"
+          }}
+        >
+        </div>
+      )
+    };
   return (
     <div className="mt-24 flex flex-col justify-center items-center mb-12 ">
-      <p className="font-semibold text-4xl ">Whats Our Coustomer Saying</p>
+      <p className="font-semibold text-4xl text-center ">Whats Our Coustomer Saying</p>
       <div className="mt-24 w-full flex justify-center">
-        <Slider ref={sliderRef1} {...settings} className="w-5/6">
+        <Slider ref={sliderRef1} {...settings} className=" w-full md:w-5/6 pb-24">
           {customerData.map((data, index) => (
            <div
            key={index}
-           className={`customer-card${index !== customerData.length - 1 ? ' with-border' : ''}`}
+           className={`customer-card ${index !== customerData.length - 1 ? ' with-border' : ''}`}
          >
            <CustomerCard data={data} />
          </div>
@@ -58,24 +110,9 @@ function Customer() {
           ))}
         </Slider>
       </div>
-      <div className="flex mt-8 mb-12">
-        <TfiArrowLeft className="w-8 h-8 mx-6" style={{ color: "#FF4729" }} onClick={handleSliderPrev}/>
-        {right?<div
-          className="rounded-full mt-3 w-3 h-3 mx-1"
-          style={{ backgroundColor: "#FF4729", filter: "opacity(0.5)" }}
-        ></div>:<div
-        className="rounded-full mt-[0.7vw] w-4 h-4 mx-1"
-        style={{ backgroundColor: "#FF4729" }}
-      ></div>}
-        {right?<div
-          className="rounded-full mt-[0.7vw] w-4 h-4 mx-1"
-          style={{ backgroundColor: "#FF4729" }}
-        ></div>:
-        <div
-          className="rounded-full mt-3 w-3 h-3 mx-1"
-          style={{ backgroundColor: "#FF4729", filter: "opacity(0.5)" }}
-        ></div>}
-        <TfiArrowRight className="w-8 h-8 mx-6" style={{ color: "#FF4729" }} onClick={handleSliderNext} />
+      <div className="flex mt-8 mb-12 relative bg-red-500">
+       
+       
       </div>
     </div>
   );
