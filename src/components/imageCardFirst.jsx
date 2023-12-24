@@ -2,7 +2,7 @@ import React from "react";
 
 
 function ImageCardFirst(props) {
-  console.log(props.data.image);
+
   return (
     <div
       className="h-96 w-64 mx-3 rounded overflow-hidden relative flex flex-col justify-end"
