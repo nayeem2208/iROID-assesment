@@ -1,36 +1,49 @@
-import React from 'react'
-import SolutionCards from '../SolutionCards'
-import { TfiArrowLeft, TfiArrowRight } from 'react-icons/tfi'
-import { SolutionsData2 } from '../../datas/CGIsolutions'
+import React from "react";
+import SolutionCards from "../SolutionCards";
+import { TfiArrowLeft, TfiArrowRight } from "react-icons/tfi";
+import { SolutionsData2 } from "../../datas/CGIsolutions";
 
 function CGI() {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-8 mt-20">
-        {SolutionsData2.map((data,index)=>(
-            <SolutionCards  data={data} key={index}/>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-8 mt-20">
+        {" "}
+        {SolutionsData2.map((data, index) => (
+          <SolutionCards data={data} key={index} />
         ))}
-        
       </div>
-      <div className="flex justify-center mt-14 " style={{color:'#FF4729'}}>
-      <TfiArrowLeft className="w-11 h-11 mx-3 " style={{filter:'opacity(0.8)' }}/>
-      <div className="flex">
-        <button className=" px-2 my-1 mx-3 text-xs " style={{borderColor:'#FF4729',borderWidth:1.2}}>01</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>02</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>03</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>04</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>05</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>06</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>07</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>08</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>09</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>10</button>
-        <button className=" px-2 my-1 mx-3 text-xs" style={{borderColor:'#FF4729',borderWidth:1.2}}>...</button>
-      </div>
-      <TfiArrowRight className="w-11 h-11 mx-3 " style={{filter:'opacity(0.8)' }}/>
+      <div
+        className="flex flex-col items-center mt-8 md:flex-row md:justify-between md:mt-14 "
+        style={{ color: "#FF4729" }}
+      >
+        <TfiArrowLeft
+          className="w-6 h-6 sm:w-11 sm:h-11 mx-3 mb-3 md:mb-0"
+          style={{ filter: "opacity(0.8)" }}
+        />
+        <div className="flex flex-wrap justify-center">
+          {Array.from({ length: 10 }, (_, index) => (
+            <button
+              key={index}
+              className="px-2 my-1 mx-3 text-xs border border-solid border-[#FF4729]"
+              style={{ borderWidth: 1.2 }}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            className="px-2 my-1 mx-3 text-xs border border-solid border-[#FF4729]"
+            style={{ borderWidth: 1.2 }}
+          >
+            ...
+          </button>
+        </div>
+        <TfiArrowRight
+          className="w-6 h-6 sm:w-11 sm:h-11 mx-3 mb-3 md:mb-0"
+          style={{ filter: "opacity(0.8)" }}
+        />
       </div>
     </div>
-  )
+  );
 }
 
-export default CGI
+export default CGI;

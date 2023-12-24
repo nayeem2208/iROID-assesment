@@ -1,3 +1,4 @@
+
 import React, { useRef } from "react";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 import ImageCardFirst from "./imageCardFirst";
@@ -26,28 +27,55 @@ function FirstBody() {
 
   const settings = {
     dots: true,
-    infinite: false,
-    speed: 500,
+    infinite: true,
+    // speed: 500,
+    autoplay: true,
+    speed: 2000,
+      autoplaySpeed: 3000,
+      cssEase: "linear",
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
-    nextArrow: <IoArrowForward/>,
-      prevArrow:<IoArrowBackOutline/>
+    nextArrow: <IoArrowForward />,
+    prevArrow: <IoArrowBackOutline />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
     <div
-      className="relative h-96 flex flex-col justify-center items-center text-white text-center"
+      className="relative h-auto md:h-96 flex flex-col justify-center items-center text-white text-center"
       style={{
         background:
           "linear-gradient(355deg, rgba(0,0,96,1) 25%, rgba(0,0,96,0.6) 100%)",
-        height: "160vh",
+        height: "auto",
+        minHeight: "160vh",
         fontFamily:
           "-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Ubuntu",
       }}
     >
-      {/* Slack icons */}
-      <AiOutlineSlack
+     <AiOutlineSlack
         className="absolute mt-6 w-4 h-4"
         style={{ top: '10vh', left: '12vh', zIndex: 10 }}
       />
@@ -73,15 +101,15 @@ function FirstBody() {
       />
 
       {/* Title */}
-      <div className="w-4/6 flex justify-center mt-24">
-        <p className="text-5xl font-semibold">
+      <div className="w-11/12 md:w-4/6 flex justify-center mt-8 md:mt-24">
+        <p className="text-4xl md:text-5xl font-semibold">
           Check out our portfolio to discover how <br />
           we can make your product listings pop.
         </p>
       </div>
 
       {/* Subtitle */}
-      <div className="w-3/5 mt-12 ">
+      <div className="w-11/12 md:w-3/5 mt-8 md:mt-12 ">
         <p className="font-light">
           Like the content you see from our portfolio? Click the link below and
           fill out the <br /> contact form to receive a free, personalized demo.
@@ -90,7 +118,7 @@ function FirstBody() {
 
       {/* Contact Us Button */}
       <button
-        className="mt-12 h-10 w-48 text-sm font-semibold rounded-md flex justify-center items-center"
+        className="mt-8 md:mt-12 h-10 w-48 text-sm md:text-base font-semibold rounded-md flex justify-center items-center"
         style={{
           background:
             "linear-gradient(90deg, rgba(0,41,251,1) 20%, rgba(254,0,52,1) 100%)",
@@ -102,8 +130,8 @@ function FirstBody() {
       </button>
 
       {/* Slider */}
-      <div className="mt-24 w-full flex justify-center">
-        <Slider ref={sliderRef} {...settings} className="w-5/6">
+      <div className="w-full flex flex-wrap justify-center items-center mt-8 md:mt-24">
+        <Slider ref={sliderRef} {...settings} className="w-full  md:w-5/6">
           {FirstBodyData.map((data, index) => (
             <ImageCardFirst data={data} key={index} />
           ))}
@@ -111,7 +139,7 @@ function FirstBody() {
       </div>
 
       {/* Navigation Arrows */}
-      <div className="w-full flex px-16 text-gray-400 mt-8">
+      <div className="w-full flex px-8 md:px-16 text-gray-400 mt-8 md:mt-12">
         <div className="w-3/6 flex justify-start" onClick={handleSliderPrev}>
           <IoArrowBackOutline className="w-8 h-8" />
         </div>
@@ -124,3 +152,4 @@ function FirstBody() {
 }
 
 export default FirstBody;
+

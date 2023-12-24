@@ -6,8 +6,8 @@ function Subscribe() {
       className="w-full h-80 mb-24 flex flex-col justify-center items-center text-white relative overflow-hidden"
       style={{ backgroundColor: "#000060" }}
     >
-      <p className="text-4xl ">Subscribe to Solution Newsletters</p>
-      <p className="font-light mt-6 ">
+      <p className="text-4xl text-center">Subscribe to Solution Newsletters</p>
+      <p className="font-light mt-6 text-center">
         Get the latest insights and research delivered straight to your inbox.
       </p>
       <button
@@ -31,7 +31,7 @@ function Subscribe() {
         }}
       ></div>
       <div
-        className="bg-gray-300 rounded-full   absolute w-8 h-8"
+        className="bg-gray-300 rounded-full   absolute sm:w-8 sm:h-8"
         style={{
           top: "6vw",
           left: "20vw",
@@ -40,7 +40,7 @@ function Subscribe() {
         }}
       ></div>
       <div
-        className="bg-gray-300 rounded-full   absolute w-24 h-24"
+        className="bg-gray-300 rounded-full   absolute sm:w-24 sm:h-24"
         style={{
           top: "13vw",
           left: "12vw",
@@ -50,7 +50,7 @@ function Subscribe() {
       ></div>
 
       <div
-        className="bg-gray-300   absolute w-48 h-48"
+        className="bg-gray-300   absolute sm:w-48 sm:h-48"
         style={{
           top: "4vw",
           right: "12vw",

@@ -5,7 +5,7 @@ function ImageCardFirst(props) {
 
   return (
     <div
-      className="h-96 w-64 mx-3 rounded overflow-hidden relative flex flex-col justify-end"
+      className="h-96 w-64 mx-3 rounded  overflow-hidden relative flex  flex-col justify-end"
       style={{
         backgroundImage: `url(${props.data.image})`,
         backgroundSize: "cover",
