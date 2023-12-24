@@ -26,7 +26,6 @@ function Subscribe() {
           top: "-3.5vw",
           left: "0.2vw",
           transform: "rotate(24deg)",
-          borderRadius: "5",
           borderRadius: "55px",
           filter: "opacity(0.3)",
         }}
@@ -56,7 +55,6 @@ function Subscribe() {
           top: "4vw",
           right: "12vw",
           transform: "rotate(24deg)",
-          borderRadius: "5",
           borderRadius: "55px",
           filter: "opacity(0.3)",
         }}
