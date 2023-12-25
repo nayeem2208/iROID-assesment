@@ -1,14 +1,11 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import SolutionCards from "./SolutionCards";
-import { SolutionsData } from "../datas/solutionsData";
-import { TfiArrowLeft, TfiArrowRight } from "react-icons/tfi";
-import All from "./solutions/All";
 import Routers from "../Router";
+import { motion } from "framer-motion";
 
 function Solutions() {
   const location = useLocation();
-  console.log(location.pathname)
+
   return (
     <div className="text-gray-800 mb-12">
       <div className="mt-24 flex justify-center">
@@ -21,27 +18,27 @@ function Solutions() {
             location.pathname.endsWith("/") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}
         >
-          All
+          <motion.p whileHover={{color:'#FF4729'}}>All</motion.p>
         </Link>
         <Link to="/CGI"  className={`mx-4 ${
             location.pathname.endsWith("/CGI") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
-          CGI
+          <motion.p whileHover={{color:'#FF4729'}}>CGI</motion.p>
         </Link>
         <Link to="/Enhance_dbrand_contend"  className={`mx-4 ${
             location.pathname.endsWith("/Enhance_dbrand_contend") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
-          Enhanced Brand Content
+          <motion.p whileHover={{color:'#FF4729'}}>Enhanced Brand Content</motion.p>
         </Link>
         <Link to="/Photography"  className={`mx-4 ${
             location.pathname.endsWith("/Photography") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
-          Product Photography
+          <motion.p whileHover={{color:'#FF4729'}}>Product Photography</motion.p>
         </Link>
         <Link to="/CreativeServices"  className={`mx-4 ${
             location.pathname.endsWith("/CreativeServices") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
-          Creative Services
+          <motion.p whileHover={{color:'#FF4729'}}>Creative Services</motion.p>
         </Link>
       </div>
       <Routers />
