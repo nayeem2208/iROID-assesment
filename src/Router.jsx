@@ -7,11 +7,11 @@ import Enhanced from './components/solutions/Enhanced'
 function Routers() {
     return (
      <Routes>
-      <Route path='/' exact  element={<All/>}/>
-      <Route path='/CGI' element={<CGI/>}/>
-      <Route path='/Enhance_dbrand_contend' element={<Enhanced/>}/>
-      <Route path='/Photography' element={<CGI/>}/>
-      <Route path='/CreativeServices'   element={<All/>}/>
+      <Route path='/iROID-assesment/' exact  element={<All/>}/>
+      <Route path='/iROID-assesment/CGI' element={<CGI/>}/>
+      <Route path='/iROID-assesment/Enhance_dbrand_contend' element={<Enhanced/>}/>
+      <Route path='/iROID-assesment/Photography' element={<CGI/>}/>
+      <Route path='/iROID-assesment/CreativeServices'   element={<All/>}/>
      </Routes>
     )
   }
