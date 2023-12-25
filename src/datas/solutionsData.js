@@ -7,7 +7,7 @@ export const SolutionsData=[
     {
         title:'Naan Stonefire',
         des:'CGI - Enhanced Brand Content - Food & Beverage',
-        image:'./card2.svg'
+        image:'card2.svg'
     },
     {
         title:'Chicago Cubs',
