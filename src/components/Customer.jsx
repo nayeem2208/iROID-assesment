@@ -82,7 +82,7 @@ function Customer() {
     ),
   };
   return (
-    <div className="mt-24 flex flex-col justify-center items-center mb-12 ">
+    <div className="mt-24 flex flex-col justify-center items-center mb-12 overflow-hidden">
       <p className="font-semibold text-4xl text-center ">
         Whats Our Coustomer Saying
       </p>

@@ -32,7 +32,7 @@ function Header() {
   }, [menuOpen]);
 
   return (
-    <div className="flex  md:flex-row px-4 lg:px-0 justify-between md:justify-between lg:justify-evenly items-center md:h-20">
+    <div className="flex  md:flex-row px-4 lg:px-0 justify-between md:justify-between lg:justify-evenly items-center md:h-20 overflow-hidden">
       <div className="mt-6 md:mt-0 mb-3 md:mb-0 min-w-9">
         <img src="./icon.svg" alt="" className="h-9" />
       </div>
