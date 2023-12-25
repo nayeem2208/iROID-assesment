@@ -13,29 +13,29 @@ function Solutions() {
       </div>
       <div className="flex flex-wrap justify-center mt-8">
         <Link
-          to="/"
+          to="/iROID-assesment/"
           className={`mx-4 ${
             location.pathname.endsWith("/") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}
         >
           <motion.p whileHover={{color:'#FF4729'}}>All</motion.p>
         </Link>
-        <Link to="/CGI"  className={`mx-4 ${
+        <Link to="/iROID-assesment/CGI"  className={`mx-4 ${
             location.pathname.endsWith("/CGI") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
           <motion.p whileHover={{color:'#FF4729'}}>CGI</motion.p>
         </Link>
-        <Link to="/Enhance_dbrand_contend"  className={`mx-4 ${
+        <Link to="/iROID-assesment/Enhance_dbrand_contend"  className={`mx-4 ${
             location.pathname.endsWith("/Enhance_dbrand_contend") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
           <motion.p whileHover={{color:'#FF4729'}}>Enhanced Brand Content</motion.p>
         </Link>
-        <Link to="/Photography"  className={`mx-4 ${
+        <Link to="/iROID-assesment/Photography"  className={`mx-4 ${
             location.pathname.endsWith("/Photography") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
           <motion.p whileHover={{color:'#FF4729'}}>Product Photography</motion.p>
         </Link>
-        <Link to="/CreativeServices"  className={`mx-4 ${
+        <Link to="/iROID-assesment/CreativeServices"  className={`mx-4 ${
             location.pathname.endsWith("/CreativeServices") ? "border-[0.1vw] px-3  border-orange-600 rounded-xl" : ""
           }`}>
           <motion.p whileHover={{color:'#FF4729'}}>Creative Services</motion.p>
