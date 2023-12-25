@@ -73,7 +73,7 @@ function FirstBody() {
 
   return (
     <div
-      className="relative h-auto  flex flex-col justify-center items-center text-white text-center"
+      className="relative h-auto  flex flex-col justify-center items-center text-white text-center overflow-hidden"
       style={{
         background:
           "linear-gradient(355deg, rgba(0,0,96,1) 25%, rgba(0,0,96,0.6) 100%)",

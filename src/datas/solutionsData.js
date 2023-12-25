@@ -2,7 +2,7 @@ export const SolutionsData=[
     {
         title:'AR/VR/XR  Solution',
         des:'CGI - Enhanced Brand Content​ - Home & Hardware',
-        image:'card1.svg'
+        image:'./card1.svg'
     },
     {
         title:'Naan Stonefire',
@@ -12,21 +12,21 @@ export const SolutionsData=[
     {
         title:'Chicago Cubs',
         des:'CGI - Fashion & Apparel',
-        image:'card3.svg'
+        image:'./card3.svg'
     },
     {
         title:'Neutrogena  Naturals',
         des:'CGI - Enhanced Brand Content ​- Health & Beauty',
-        image:'card4.svg'
+        image:'./card4.svg'
     },
     {
         title:'Crafters Union',
         des:'Product Photography - Enhanced Brand Content - Food & Beverage',
-        image:'card5.svg'
+        image:'./card5.svg'
     },
     {
         title:'Crook & Marker',
         des:'Product Photography - Enhanced Brand Content - Food & Beverage',
-        image:'card6.svg'
+        image:'./card6.svg'
     },
 ]

@@ -7,7 +7,7 @@ function Solutions() {
   const location = useLocation();
 
   return (
-    <div className="text-gray-800 mb-12">
+    <div className="text-gray-800 mb-12 overflow-hidden">
       <div className="mt-24 flex justify-center">
         <p className="font-semibold text-4xl">Our Solutions</p>
       </div>

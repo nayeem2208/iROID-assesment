@@ -5,7 +5,7 @@ import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 function Footer() {
   return (
-    <div className="pt-8 pb-12" style={{ backgroundColor: "#00002D" }}>
+    <div className="pt-8 pb-12 overflow-hidden" style={{ backgroundColor: "#00002D" }}>
       <div className="flex flex-wrap text-gray-300 footer justify-center ">
         <div className="text-xs font-thin leading-8 mx-2 sm:mx-8">
           <motion.p whileHover={{color:'white',scale:1.02}} className="text-sm font-medium  mb-4" style={{fontWeight:'550'}}>Industries</motion.p>

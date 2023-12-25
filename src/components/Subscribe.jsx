@@ -5,7 +5,7 @@ function Subscribe() {
   
   return (
     <motion.div
-      className="w-full h-80 mb-24 flex flex-col justify-center items-center text-white relative overflow-hidden"
+      className="w-full h-80 mb-24 flex flex-col justify-center items-center text-white relative overflow-hidden overflow-hidden"
       style={{ backgroundColor: "#000060" }}
     >
       <p className="text-4xl text-center">Subscribe to Solution Newsletters</p>
