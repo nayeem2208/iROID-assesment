@@ -8,7 +8,7 @@ export const SolutionsData2=[
     {
         title:'Neutrogena  Naturals',
         des:'CGI - Enhanced Brand Content ​- Health & Beauty',
-        image:'./card4.svg'
+        image:'.card4.svg'
     },
     {
         title:'Crafters Union',
@@ -18,7 +18,7 @@ export const SolutionsData2=[
     {
         title:'AR/VR/XR  Solution',
         des:'CGI - Enhanced Brand Content​ - Home & Hardware',
-        image:'./card1.svg'
+        image:'/card1.svg'
     },
     {
         title:'Naan Stonefire',
