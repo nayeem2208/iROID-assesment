@@ -1,42 +1,625 @@
-import React from 'react';
-import { RiArrowDropDownLine } from 'react-icons/ri';
+import { Menu, Transition } from "@headlessui/react";
+import React, { Fragment, useEffect, useState } from "react";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { RxDropdownMenu } from "react-icons/rx";
 
 function Header() {
+  const [collapsed, setCollapsed] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const isSmallScreen = window.innerWidth <= 640;
+  useEffect(() => {
+    const handleResize = () => {
+      setCollapsed(window.innerWidth <= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseLeave = () => {
+      setMenuOpen(false);
+    };
+
+    if (menuOpen) {
+      window.addEventListener("mouseleave", handleMouseLeave);
+    }
+
+    return () => {
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, [menuOpen]);
+
   return (
-    <div className="flex flex-col md:flex-row justify-evenly items-center md:h-20">
-      <div className="mb-3 md:mb-0">
-        <img src="/icon.svg" alt="" className="h-9" />
+    <div className="flex  md:flex-row px-4 lg:px-0 justify-between md:justify-between lg:justify-evenly items-center md:h-20">
+      <div className="mt-6 md:mt-0 mb-3 md:mb-0 min-w-9">
+        <img src="./icon.svg" alt="" className="h-9" />
       </div>
-      <div className="flex flex-col md:flex-row font-light text-black text-sm">
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          Solutions<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          Platform<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          Industries<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          Featured Insights<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          About Us<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0 md:flex">
-          Careers<RiArrowDropDownLine className="w-6 h-6 ml-2" />
-        </div>
-        <div className="mx-3 my-2 md:my-0">Our Work</div>
-      </div>
-      <div>
-        <button
-          type="button"
-          style={{ backgroundColor: '#3F3FFF' }}
-          className="text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      {!collapsed && (
+        <>
+          <div className="flex flex-col md:flex-row font-light text-black text-xs lg:text-sm">
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              Solutions
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              Platform
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              Industries
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              Featured Insights
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              About Us
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0 md:flex">
+              Careers
+              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+            </div>
+            <div className="mx-3 my-2 md:my-0">Our Work</div>
+          </div>
+          <div>
+            <button
+              type="button"
+              style={{ backgroundColor: "#3F3FFF" }}
+              className="text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Free Consultation
+            </button>
+          </div>
+        </>
+      )}
+      {collapsed && (
+        <div
+          className="relative inline-block text-left z-30 "
+          onMouseEnter={() => setMenuOpen(true)}
+          onMouseLeave={() => setMenuOpen(false)}
         >
-          Free Consultation
-        </button>
-      </div>
+          <Menu as="div" className="relative inline-block text-left ">
+            <div className="mb-3">
+              <Menu.Button onClick={() => setMenuOpen(!menuOpen)} className="inline-flex w-full rounded-md font-medium text-orange-500  hover:bg-mainColor focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                {" "}
+                <RxDropdownMenu className="mx-2 w-8 h-8 " />
+              </Menu.Button>
+            </div>
+            <Transition
+              as={Fragment}
+              show={menuOpen}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ml-64">
+                <div className="px-1 py-1 ">
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              Solutions
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Solutions 1
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Solution 2
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              Platform
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      IOS
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Android
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      PC
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              Industries
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      IT
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Non IT
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              Featured Insights
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Insights 1
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Insights 2
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              About Us
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      About Company
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      About Team
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      About Work
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-2 py-2`}
+                      >
+                        <Menu
+                          as="div"
+                          className="relative inline-block text-left "
+                        >
+                          <div className="mb-3">
+                            <Menu.Button
+                              className={`${
+                                active
+                                  ? "bg-orange-600 text-white !important"
+                                  : "text-gray-900 hover:bg-gray-100 !important"
+                              } group flex w-full items-center rounded-md px-2 `}
+                            >
+                              {" "}
+                              Careers
+                              <RiArrowDropDownLine className="w-6 h-6 ml-2" />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            // show={menuOpen}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <div className="px-1 py-1 ">
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Frontend
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Backend
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Devops
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Testing
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                  {({ active }) => (
+                                    <button
+                                      className={`${
+                                        active
+                                          ? "bg-orange-600 text-white !important"
+                                          : "text-gray-900 hover:bg-gray-100 !important"
+                                      } group flex w-full items-center rounded-md px-2 py-2 z-50`}
+                                    >
+                                      Team lead
+                                    </button>
+                                  )}
+                                </Menu.Item>
+                              </div>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    {({ active }) => (
+                      <button
+                        className={`${
+                          active
+                            ? "bg-orange-600 text-white  !important"
+                            : "text-gray-900 hover:bg-gray-100 !important"
+                        } group flex w-full items-center rounded-md px-3 py-4`}
+                      >
+                        Our work
+                      </button>
+                    )}
+                  </Menu.Item>
+                  <Menu.Item>
+                    <button
+                      type="button"
+                      style={{ backgroundColor: "#3F3FFF" }}
+                      className="text-white hover:bg-blue-400 focus:ring-4 focus:ring-blue-300 rounded-lg text-sm mt-3 px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    >
+                      Free Consultation
+                    </button>
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </div>
+      )}
     </div>
   );
 }

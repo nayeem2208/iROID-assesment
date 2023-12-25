@@ -2,6 +2,7 @@ import React from "react";
 import { SolutionsData } from "../../datas/solutionsData";
 import SolutionCards from "../SolutionCards";
 import { TfiArrowLeft, TfiArrowRight } from "react-icons/tfi";
+import { motion } from "framer-motion";
 
 function All() {
   return (
@@ -22,13 +23,14 @@ function All() {
         />
         <div className="flex flex-wrap justify-center">
           {Array.from({ length: 10 }, (_, index) => (
-            <button
+            <motion.button
+            whileHover={{backgroundColor:'#FF4729',color:'white'}}
               key={index}
               className="px-2 sm:py-1 md:py-2 my-1 mx-3 text-xs border border-solid border-[#FF4729]"
               style={{ borderWidth: 1.2 }}
             >
              {index<9?'0':null} {index + 1}
-            </button>
+            </motion.button>
           ))}
           <button
             className="px-2 my-1 mx-3 text-xs border border-solid border-[#FF4729]"

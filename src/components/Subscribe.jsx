@@ -1,8 +1,10 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function Subscribe() {
+  
   return (
-    <div
+    <motion.div
       className="w-full h-80 mb-24 flex flex-col justify-center items-center text-white relative overflow-hidden"
       style={{ backgroundColor: "#000060" }}
     >
@@ -10,7 +12,8 @@ function Subscribe() {
       <p className="font-light mt-6 text-center">
         Get the latest insights and research delivered straight to your inbox.
       </p>
-      <button
+      <motion.button
+      whileHover={{background:"linear-gradient(90deg, rgba(254,0,52,0.8) 20%, rgba(0,41,251,0.8) 100%)"}}
         className="mt-8 h-10 w-48  rounded-md flex justify-center items-center"
         style={{
           background:
@@ -19,9 +22,10 @@ function Subscribe() {
         }}
       >
         SUBSCRIBE
-      </button>
-      <div
+      </motion.button>
+      <motion.div
         className="bg-gray-300   absolute w-48 h-48"
+        whileHover={{filter:'opacity(0.5)'}}
         style={{
           top: "-3.5vw",
           left: "0.2vw",
@@ -29,8 +33,8 @@ function Subscribe() {
           borderRadius: "55px",
           filter: "opacity(0.3)",
         }}
-      ></div>
-      <div
+      ></motion.div>
+      <motion.div whileHover={{filter:'opacity(0.5)'}}
         className="bg-gray-300 rounded-full   absolute sm:w-8 sm:h-8"
         style={{
           top: "6vw",
@@ -38,8 +42,8 @@ function Subscribe() {
           transform: "rotate(20deg)",
           filter: "opacity(0.3)",
         }}
-      ></div>
-      <div
+      ></motion.div>
+      <motion.div whileHover={{filter:'opacity(0.5)'}}
         className="bg-gray-300 rounded-full   absolute sm:w-24 sm:h-24"
         style={{
           top: "13vw",
@@ -47,9 +51,9 @@ function Subscribe() {
           transform: "rotate(20deg)",
           filter: "opacity(0.3)",
         }}
-      ></div>
+      ></motion.div>
 
-      <div
+      <motion.div whileHover={{filter:'opacity(0.5)'}}
         className="bg-gray-300   absolute sm:w-48 sm:h-48"
         style={{
           top: "4vw",
@@ -58,8 +62,8 @@ function Subscribe() {
           borderRadius: "55px",
           filter: "opacity(0.3)",
         }}
-      ></div>
-      <div
+      ></motion.div>
+      <motion.div whileHover={{filter:'opacity(0.5)'}}
         className="bg-gray-300 rounded-full   absolute w-8 h-8"
         style={{
           top: "12vw",
@@ -67,8 +71,8 @@ function Subscribe() {
           transform: "rotate(20deg)",
           filter: "opacity(0.3)",
         }}
-      ></div>
-      <div
+      ></motion.div>
+      <motion.div whileHover={{filter:'opacity(0.5)'}}
         className="bg-gray-300 rounded-full   absolute w-24 h-24"
         style={{
           bottom: "-4vw",
@@ -76,8 +80,8 @@ function Subscribe() {
           transform: "rotate(20deg)",
           filter: "opacity(0.3)",
         }}
-      ></div>
-    </div>
+      ></motion.div>
+    </motion.div>
   );
 }
 

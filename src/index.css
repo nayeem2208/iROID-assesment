@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .customer-card.with-border {
-    border-right: 1px solid rgb(28, 28, 139)
+    border-right: 1px solid rgb(28, 28, 139) !important;
   }
 
   .active-button {
